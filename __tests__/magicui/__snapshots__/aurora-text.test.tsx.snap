@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AuroraText matches snapshot 1`] = `
+<div>
+  <span
+    class="relative inline-flex overflow-hidden"
+  >
+    Snapshot Test
+    <span
+      class="pointer-events-none absolute inset-0 mix-blend-lighten"
+    >
+      <span
+        class="aurora-bg bg-[hsl(var(--color-1))]"
+      />
+      <span
+        class="aurora-bg right-0 top-0 bg-[hsl(var(--color-2))]"
+      />
+      <span
+        class="aurora-bg bottom-0 left-0 bg-[hsl(var(--color-3))]"
+      />
+      <span
+        class="aurora-bg -bottom-1/2 right-0 bg-[hsl(var(--color-4))]"
+      />
+    </span>
+  </span>
+</div>
+`;
