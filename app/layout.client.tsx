@@ -5,6 +5,7 @@ import { useTheme } from "@/contexts/ThemeContext";
 import { Moon, Sun } from "lucide-react";
 import { Toaster } from "@/components/ui/sonner";
 import { useState, useEffect } from 'react';
+import { cn } from "@/lib/utils";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
     const [isClient, setIsClient] = useState(false);
@@ -17,7 +18,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     return (
         <>
             <header className="fixed top-4 right-4 z-50">
-                <div className="flex items-center gap-2">
+                <div className={cn("flex items-center gap-2 p-2 rounded-full", theme === 'light' ? 'bg-white' : 'bg-black')}>
                     {isClient && (
                         <>
                             {theme === 'light' ? (
