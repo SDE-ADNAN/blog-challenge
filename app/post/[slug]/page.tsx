@@ -18,7 +18,14 @@ export default function PostDetail({ params }: { params: Promise<{ slug: string 
 
     const post = posts.find(p => p.id === postId);
 
-    if (!post) return <div>Post not found</div>;
+    if (!post || loading) return (<>
+        {[...Array(3)].map((_, i) => (
+            <div key={i} className="space-y-2">
+                <Skeleton className="h-4 w-1/2" />
+                <Skeleton className="h-4 w-full" />
+            </div>
+        ))}
+    </>)
 
     return (
         <Card className="mb-8">
@@ -29,9 +36,16 @@ export default function PostDetail({ params }: { params: Promise<{ slug: string 
                 <p className="whitespace-pre-wrap">{post.body}</p>
 
                 <Button
-                    onClick={() => toast("Copied to clipboard!", {
-                        description: "Post URL copied successfully",
-                    })}
+                    onClick={() => toast(
+                        <CustomToast
+                            message="Copied to clipboard!"
+                            title="Success"
+                        />,
+                        {
+                            duration: 3000,
+                            position: "bottom-right"
+                        }
+                    )}
                     className="mt-4"
                 >
                     Share Post
@@ -68,3 +82,38 @@ export default function PostDetail({ params }: { params: Promise<{ slug: string 
         </Card>
     );
 }
+
+
+interface CustomToastProps {
+    message?: string;
+    onClose?: () => void;
+    title?: string;
+}
+
+// Create a custom toast component with TypeScript
+const CustomToast = ({
+    message = "Operation completed successfully",
+    onClose,
+    title = "Success"
+}: CustomToastProps) => {
+    return (
+        <Card className="bg-green-500 text-white w-full h-full border">
+            <CardContent className="p-4">
+                <div className="flex items-center justify-between">
+                    <div>
+                        <h3 className="font-semibold">{title}</h3>
+                        <p className="text-sm opacity-90">{message}</p>
+                    </div>
+                    <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={onClose}
+                        className="text-white hover:bg-white/20"
+                    >
+                        ×
+                    </Button>
+                </div>
+            </CardContent>
+        </Card>
+    );
+};

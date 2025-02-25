@@ -15,9 +15,9 @@
 
 /* Dark theme */
 [data-theme="dark"], :root.dark {
-  --background: #1f2937;
+  --background: #000000;
   --foreground: #ffffff;
-  --card-bg: #374151;
+  --card-bg: #0b0b0b;
   --card-border: #4b5563;
   --text-muted: #9ca3af;
   --border: #4b5563;

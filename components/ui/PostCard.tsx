@@ -23,14 +23,15 @@ const PostCard = ({ post }: PostCardProps) => {
 
     return (
         <Link href={`/post/${post.id}`} className="w-full h-full">
-            <Card className="flex flex-col h-full hover:-translate-y-0.5 transition-transform duration-200 cursor-pointer rounded-t-lg">
-                <div className="relative h-48 overflow-hidden rounded-t-lg">
+            <Card className="flex flex-col h-full hover:-translate-y-0.5 transition-transform duration-200 cursor-pointer ">
+                <div className="relative h-48 overflow-hidden ">
                     <ImageWithFallback
                         src={imgUrl}
                         alt={title}
                         fallbackSrc={FALLBACK_IMAGE_URL}
+                        style={{ borderRadius: "0.7rem 0.7rem 0 0" }}
                         fill
-                        className="object-cover transition-transform duration-300 hover:scale-110 rounded-t-lg"
+                        className="object-cover "
                         priority
                     />
                 </div>
