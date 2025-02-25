@@ -10,68 +10,88 @@ import { formatString } from '@/lib/utils';
 
 export default function PostDetail({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = use(params);
-    const postId = parseInt(slug)
+    const postId = parseInt(slug);
 
-    // Get all posts to find current one
     const { posts } = usePosts();
     const { comments, loading } = useComments(postId);
 
     const post = posts.find(p => p.id === postId);
 
-    if (!post || loading) return (<>
-        {[...Array(3)].map((_, i) => (
-            <div key={i} className="space-y-2">
-                <Skeleton className="h-4 w-1/2" />
-                <Skeleton className="h-4 w-full" />
-            </div>
-        ))}
-    </>)
+    if (!post || loading) return (
+        <div className="space-y-4">
+            {[...Array(3)].map((_, i) => (
+                <div key={i} className="space-y-2">
+                    <Skeleton className="h-4 w-1/2 dark:bg-gray-700 bg-gray-200" />
+                    <Skeleton className="h-4 w-full dark:bg-gray-700 bg-gray-200" />
+                </div>
+            ))}
+        </div>
+    );
 
     return (
-        <Card className="mb-8">
+        <Card className="
+            mb-8 w-full rounded-xl border shadow-lg backdrop-blur-xl
+            dark:bg-gradient-to-b dark:from-[#141E30] dark:via-[#243B55] dark:to-[#101010] dark:border-gray-800 dark:shadow-black/50
+            bg-gradient-to-b from-[#E2E8F0] via-[#CBD5E1] to-[#F1F5F9] border-gray-300 shadow-gray-400/50
+        ">
             <CardHeader>
-                <CardTitle>{formatString(post.title, Infinity)}</CardTitle>
+                <CardTitle className="font-bold text-2xl 
+                    dark:text-[#3de537] text-gray-900">
+                    {formatString(post.title, Infinity)}
+                </CardTitle>
             </CardHeader>
             <CardContent>
-                <p className="whitespace-pre-wrap">{post.body}</p>
+                <p className="text-lg 
+                    dark:text-gray-300 text-gray-700">
+                    {post.body}
+                </p>
 
                 <Button
-                    onClick={() => toast(
-                        <CustomToast
-                            message="Copied to clipboard!"
-                            title="Success"
-                        />,
-                        {
-                            duration: 3000,
-                            position: "bottom-right"
-                        }
-                    )}
-                    className="mt-4"
+                    onClick={() => toast("✅ Copied to clipboard! 🎉")}
+                    className="mt-4 transition-all px-6 rounded-[4px] py-2
+                        dark:bg-[#FF4C29] dark:hover:bg-[#FF6A3D] dark:text-white
+                        bg-[#1E88E5] hover:bg-[#1976D2] text-white"
                 >
                     Share Post
                 </Button>
 
                 {/* Comments Section */}
-                <div className="mt-8 space-y-4">
-                    <h2 className="text-2xl font-semibold">Comments</h2>
+                <div className="mt-8 space-y-6">
+                    <h2 className="text-2xl font-semibold 
+                        dark:text-[#FFB400] text-[#E65100]">
+                        Comments
+                    </h2>
 
                     {loading ? (
-                        <>
+                        <div className="space-y-4">
                             {[...Array(3)].map((_, i) => (
                                 <div key={i} className="space-y-2">
-                                    <Skeleton className="h-4 w-1/2" />
-                                    <Skeleton className="h-4 w-full" />
+                                    <Skeleton className="h-4 w-1/2 dark:bg-gray-700 bg-gray-200" />
+                                    <Skeleton className="h-4 w-full dark:bg-gray-700 bg-gray-200" />
                                 </div>
                             ))}
-                        </>
+                        </div>
                     ) : (
-                        <div className="space-y-4">
+                        <div className="space-y-6">
                             {comments.map(comment => (
-                                <Card key={comment.id}>
+                                <Card key={comment.id} className="
+                                    rounded-xl shadow-md border
+                                    dark:bg-[#191919] dark:border-gray-700 dark:shadow-black/50
+                                    bg-white border-gray-300 shadow-gray-300/50
+                                ">
                                     <CardContent className="pt-6">
-                                        <h3 className="font-semibold">{comment.name}</h3>
-                                        <p className="text-sm text-muted-foreground">{comment.email}</p>
-                                        <p className="mt-2">{comment.body}</p>
+                                        <h3 className="font-semibold text-lg 
+                                            dark:text-[#00FFA3] text-gray-900">
+                                            {formatString(comment.name, Infinity)}
+                                        </h3>
+                                        <p className="text-sm 
+                                            dark:text-gray-500 text-gray-600">
+                                            {comment.email}
+                                        </p>
+                                        <p className="mt-2 
+                                            dark:text-gray-300 text-gray-700 ml-3">
+                                            {comment.body}
+                                        </p>
                                     </CardContent>
                                 </Card>
                             ))}
@@ -82,38 +102,3 @@ export default function PostDetail({ params }: { params: Promise<{ slug: string 
         </Card>
     );
 }
-
-
-interface CustomToastProps {
-    message?: string;
-    onClose?: () => void;
-    title?: string;
-}
-
-// Create a custom toast component with TypeScript
-const CustomToast = ({
-    message = "Operation completed successfully",
-    onClose,
-    title = "Success"
-}: CustomToastProps) => {
-    return (
-        <Card className="bg-green-500 text-white w-full h-full border">
-            <CardContent className="p-4">
-                <div className="flex items-center justify-between">
-                    <div>
-                        <h3 className="font-semibold">{title}</h3>
-                        <p className="text-sm opacity-90">{message}</p>
-                    </div>
-                    <Button
-                        variant="ghost"
-                        size="icon"
-                        onClick={onClose}
-                        className="text-white hover:bg-white/20"
-                    >
-                        ×
-                    </Button>
-                </div>
-            </CardContent>
-        </Card>
-    );
-};

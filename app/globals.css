@@ -11,6 +11,8 @@
   --card-border: #e5e7eb;
   --text-muted: #6b7280;
   --border: #e5e7eb;
+  --radius:1rem
+
 }
 
 /* Dark theme */
@@ -82,5 +84,16 @@ body {
   .skeleton {
     background-color: var(--border);
     border-radius: 0.5rem;
+  }
+}
+
+@layer base {}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }
