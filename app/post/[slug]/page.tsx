@@ -3,29 +3,21 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
-import { useComments, usePosts } from '@/hooks/usePosts';
+import { useComments, usePost } from '@/hooks/usePosts';
 import { Skeleton } from '@/components/ui/skeleton';
 import { use } from "react";
 import { formatString } from '@/lib/utils';
+import PostDetailSkeleton from '@/components/ui/skeleton-loaders/post-detail-skeleton';
 
 export default function PostDetail({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = use(params);
     const postId = parseInt(slug);
 
-    const { posts } = usePosts();
+    const { post, loading: postLoading } = usePost(postId);
     const { comments, loading } = useComments(postId);
 
-    const post = posts.find(p => p.id === postId);
-
-    if (!post || loading) return (
-        <div className="space-y-4">
-            {[...Array(3)].map((_, i) => (
-                <div key={i} className="space-y-2">
-                    <Skeleton className="h-4 w-1/2 dark:bg-gray-700 bg-gray-200" />
-                    <Skeleton className="h-4 w-full dark:bg-gray-700 bg-gray-200" />
-                </div>
-            ))}
-        </div>
+    if (!post || loading || postLoading) return (
+        <PostDetailSkeleton />
     );
 
     return (

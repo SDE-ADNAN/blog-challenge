@@ -4,6 +4,7 @@ import "./globals.css";
 import Layout from "./layout.client";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { DotPatternWithGlowEffect } from "@/components/magicui/dot-pattern-with-glow-effect";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -52,7 +53,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${inter.className} antialiased`}
       >
         <div className="fixed top-0 left-0 z-10 p-3 border-b-gray-700 border-b-[0.1px] w-full backdrop-blur-[2px]">
-          <h1 className="text-4xl font-bold">Blog Sphere</h1>
+          <Link href={'/'}><h1 className="text-4xl font-bold">Blog Sphere</h1></Link>
         </div>
         <DotPatternWithGlowEffect className="fixed w-full h-full top-0 left-0 -z-50" />
         <ThemeProvider>
