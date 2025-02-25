@@ -25,3 +25,19 @@ export function formatString(str: string, maxLength: number): string {
 
   return str;
 }
+
+export function getRandomBlogImage() {
+  const images = [
+    "https://miro.medium.com/v2/resize:fit:1400/format:webp/0*uvEfXPVBntVKAyCG.jpg",
+    "https://miro.medium.com/v2/resize:fit:1400/format:webp/0*vt6qfWOkoSe8yRBV.jpg",
+    // "https://source.unsplash.com/random/800x600/?nature",
+    // "https://source.unsplash.com/random/800x600/?travel",
+    // "https://source.unsplash.com/random/800x600/?food",
+    // "https://source.unsplash.com/random/800x600/?lifestyle",
+    // "https://source.unsplash.com/random/800x600/?business",
+    // "https://source.unsplash.com/random/800x600/?education",
+    // "https://source.unsplash.com/random/800x600/?news",
+  ];
+
+  return images[Math.floor(Math.random() * images.length)];
+}

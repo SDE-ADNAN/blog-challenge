@@ -19,8 +19,8 @@ export default function Home() {
 
   return (
     <div className="space-y-8">
-      <h1 className="text-4xl font-bold">Blog Posts</h1>
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <h1 className="text-4xl font-bold">Blog Sphere</h1>
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-stretch">
         {posts.map(post => (
           <PostCard key={post.id} post={post} />
         ))}

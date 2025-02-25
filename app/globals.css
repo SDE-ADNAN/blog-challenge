@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-
+/* globals.css */
 @layer base {
   :root {
     /* Light theme */
@@ -27,11 +27,42 @@
   body {
     background-color: var(--background);
     color: var(--foreground);
+    font-family: system-ui, -apple-system, sans-serif;
   }
 
   .card {
     background-color: var(--card-bg);
     border-color: var(--card-border);
+    transition: transform 0.2s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+  }
+
+  .card-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.5rem 0.5rem 0 0;
+  }
+
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .card-image:hover img {
+    transform: scale(1.1);
+  }
+
+  .container {
+    max-width: 1200px;
+  }
+
+  .grid {
+    gap: 2rem;
   }
 
   .text-muted {
@@ -40,5 +71,24 @@
 
   .border {
     border-color: var(--border);
+  }
+
+  .dark .border {
+    border-color: var(--border);
+  }
+
+  .dark .text-muted {
+    color: var(--text-muted);
+  }
+}
+
+@layer components {
+  .skeleton {
+    background-color: var(--border);
+    border-radius: 0.5rem;
+  }
+
+  .dark .skeleton {
+    background-color: var(--border);
   }
 }
