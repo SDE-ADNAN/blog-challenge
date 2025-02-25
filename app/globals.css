@@ -87,7 +87,19 @@ body {
   }
 }
 
-@layer base {}
+@layer base {
+  :root {
+    --color-1: 0 100% 63%;
+    --color-2: 270 100% 63%;
+    --color-3: 210 100% 63%;
+    --color-4: 195 100% 63%;
+    --color-5: 90 100% 63%}
+  .dark {
+    --color-1: 0 100% 63%;
+    --color-2: 270 100% 63%;
+    --color-3: 210 100% 63%;
+    --color-4: 195 100% 63%;
+    --color-5: 90 100% 63%}}
 
 @layer base {
   * {
@@ -95,5 +107,66 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@keyframes aurora-move {
+  0% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+  50% { transform: translateY(10px) translateX(10px) rotate(15deg); }
+  100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+}
+
+.aurora-bg {
+  @apply absolute h-[30vw] w-[30vw] blur-[1rem] mix-blend-overlay animate-[aurora-move_8s_infinite_alternate];
+}
+
+@keyframes dotGlow {
+  0% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.5);
+  }
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+}
+
+/* Vendor-prefixed versions for better cross-browser support */
+@-webkit-keyframes dotGlow {
+  0% {
+    opacity: 0.4;
+    -webkit-transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    -webkit-transform: scale(1.5);
+  }
+  100% {
+    opacity: 0.4;
+    -webkit-transform: scale(1);
+  }
+}
+
+.dot-animate {
+  animation-name: dotGlow;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+
+  /* Vendor prefixes for older browsers */
+  -webkit-animation-name: dotGlow;
+  -webkit-animation-timing-function: ease-in-out;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+}
+
+/* Ensure accessibility: Disable animations if user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .dot-animate {
+    animation: none;
   }
 }

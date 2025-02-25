@@ -9,7 +9,7 @@ interface DotPatternProps {
 };
 export function DotPatternWithGlowEffect({ className }: DotPatternProps) {
     return (
-        <div className="fixed flex h-full w-full flex-col items-center justify-center overflow-hidden">
+        <div className="fixed flex h-full w-full flex-col items-center justify-center overflow-hidden -z-50">
             <DotPattern
                 glow={true}
                 className={cn(

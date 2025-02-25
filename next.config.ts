@@ -5,11 +5,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "miro.medium.com",
-      },
-      {
-        protocol: "https",
-        hostname: "lh5.googleusercontent.com",
+        hostname: "framerusercontent.com",
       },
     ],
   },

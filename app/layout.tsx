@@ -52,10 +52,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${inter.className} antialiased`}
       >
-        <div className="fixed top-0 left-0 z-10 p-3 border-b-gray-700 border-b-[0.1px] w-full backdrop-blur-[2px]">
+        <div className="fixed top-0 left-0 z-10 p-3 border-b-gray-700 border-b-[0.1px] w-full backdrop-blur-[7px]">
           <Link href={'/'}><h1 className="text-4xl font-bold">Blog Sphere</h1></Link>
         </div>
-        <DotPatternWithGlowEffect className="fixed w-full h-full top-0 left-0 -z-50" />
+        <DotPatternWithGlowEffect className="fixed w-full h-full top-0 left-0 -z-50!" />
         <ThemeProvider>
           <Layout>
             <div className="space-y-8 pt-[4rem]">

@@ -22,10 +22,10 @@ export default function PostDetail({ params }: { params: Promise<{ slug: string 
 
     return (
         <Card className="
-            mb-8 w-full rounded-xl border shadow-lg backdrop-blur-xl
-            dark:bg-gradient-to-b dark:from-[#141E30] dark:via-[#243B55] dark:to-[#101010] dark:border-gray-800 dark:shadow-black/50
-            bg-gradient-to-b from-[#E2E8F0] via-[#CBD5E1] to-[#F1F5F9] border-gray-300 shadow-gray-400/50
-        ">
+    mb-8 w-full rounded-xl border shadow-lg backdrop-blur-[1px]
+    dark:bg-[rgba(20,30,48,0.6)] dark:border-gray-800 dark:shadow-black/50
+    bg-[rgba(226,232,240,0.5)] border-gray-300 shadow-gray-400/50
+">
             <CardHeader>
                 <CardTitle className="font-bold text-2xl 
                     dark:text-[#3de537] text-gray-900">

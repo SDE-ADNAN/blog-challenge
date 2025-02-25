@@ -27,16 +27,17 @@ export function formatString(str: string, maxLength: number): string {
 }
 
 export function getRandomBlogImage() {
+  // images from https://www.dark.design/
   const images = [
-    "https://miro.medium.com/v2/resize:fit:1400/format:webp/0*uvEfXPVBntVKAyCG.jpg",
-    "https://miro.medium.com/v2/resize:fit:1400/format:webp/0*vt6qfWOkoSe8yRBV.jpg",
-    // "https://source.unsplash.com/random/800x600/?nature",
-    // "https://source.unsplash.com/random/800x600/?travel",
-    // "https://source.unsplash.com/random/800x600/?food",
-    // "https://source.unsplash.com/random/800x600/?lifestyle",
-    // "https://source.unsplash.com/random/800x600/?business",
-    // "https://source.unsplash.com/random/800x600/?education",
-    // "https://source.unsplash.com/random/800x600/?news",
+    "https://framerusercontent.com/images/VLACpj5hz60AdBr5UA7QxWsC0IA.png",
+    "https://framerusercontent.com/images/RxE4MGO4hoqQD1U1IWCh31XtIVk.png",
+    "https://framerusercontent.com/images/eBewXVthrkfU83ygkD85hGPo.png",
+    "https://framerusercontent.com/images/1DXxsXSYZ8pBfQRv00qfB6FFtxM.png",
+    "https://framerusercontent.com/images/PNRHKB6luGJ5LNZ2hlbACTfFxs.png",
+    "https://framerusercontent.com/images/8bPOmwDyD5TxP9rNRqfhQnl9M8.png",
+    "https://framerusercontent.com/images/WVjxLPjZ9s7p49x9yJlwr8tFXhc.png",
+    "https://framerusercontent.com/images/4XoJizAl99exDgPknjwqiCqbgg.png",
+    "https://framerusercontent.com/images/zPbdAHavHtiMZEw4Cv0B7LD5w.png",
   ];
 
   return images[Math.floor(Math.random() * images.length)];
