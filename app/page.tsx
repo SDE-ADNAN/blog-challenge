@@ -1,9 +1,10 @@
 'use client';
 
+import { usePosts } from '@/hooks/usePosts';
+
 import { AuroraText } from '@/components/magicui/aurora-text';
 import PostCard from '@/components/ui/post-card';
 import PostGridSkeleton from '@/components/ui/skeleton-loaders/post-grid-skeleton';
-import { usePosts } from '@/hooks/usePosts';
 
 export default function Home() {
   const { posts, loading } = usePosts();

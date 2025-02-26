@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import { useTheme } from 'next-themes';
 import { Toaster as SonnerToaster } from 'sonner';
-import { Toaster } from './sonner';
+import { Toaster } from '@/components/ui/sonner';
 
 // Define the expected theme types
 type Theme = 'light' | 'dark' | 'system' | undefined;

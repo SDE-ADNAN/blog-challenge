@@ -1,9 +1,11 @@
 "use client";
-import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import Link from "next/link";
 import { formatString, getRandomBlogImage } from "@/lib/utils";
-import ImageWithFallback from "./image-with-fallback";
+
 import { FALLBACK_IMAGE_URL } from "@/constants";
+
+import ImageWithFallback from "@/components/ui/image-with-fallback";
+import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 
 interface PostCardProps {
     post: {
@@ -16,7 +18,6 @@ interface PostCardProps {
 }
 
 const PostCard = ({ post, index }: PostCardProps) => {
-    // Use post's image if available, otherwise get a random one
     const imgUrl = post.imageUrl || getRandomBlogImage();
 
     const title = post.title.length > 30 ? `${formatString(post.title.substring(0, 27), 27)} ...` : post.title;

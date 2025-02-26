@@ -1,6 +1,7 @@
-import { render, screen, fireEvent } from '@testing-library/react';
-import { ThemeProvider, useNextTheme } from './theme-context';
 import React, { ReactNode } from 'react';
+import { render, screen, fireEvent } from '@testing-library/react';
+
+import { ThemeProvider, useNextTheme } from '@/contexts/theme-context';
 
 // Mock the next-themes module
 jest.mock('next-themes', () => ({

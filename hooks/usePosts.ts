@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import { Comment, Post } from "../types/api";
 import { toast } from "sonner";
+
+import { Comment, Post } from "@/types/api";
 
 const POSTS_API = "https://jsonplaceholder.typicode.com/posts";
 const COMMENTS_API = "https://jsonplaceholder.typicode.com/comments";

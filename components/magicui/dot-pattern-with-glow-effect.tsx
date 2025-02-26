@@ -1,8 +1,10 @@
 "use client";
 
-import { cn } from "@/lib/utils";
-import { DotPattern } from "./dot-pattern";
 import { ClassValue } from "clsx";
+
+import { DotPattern } from "@/components/magicui/dot-pattern";
+
+import { cn } from "@/lib/utils";
 
 interface DotPatternProps {
     className?: ClassValue;

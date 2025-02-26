@@ -1,8 +1,9 @@
 "use client";
 
-import { cn } from "@/lib/utils";
-import { useTheme } from "next-themes";
 import React from "react";
+import { useTheme } from "next-themes";
+
+import { cn } from "@/lib/utils";
 
 interface AuroraTextProps extends React.HTMLAttributes<HTMLElement> {
   className?: string;

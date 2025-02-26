@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { Button } from './button';
+
+import { Button } from '@/components/ui/button';
 
 // Mock Radix UI Slot
 jest.mock('@radix-ui/react-slot', () => ({

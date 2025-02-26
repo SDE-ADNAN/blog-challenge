@@ -1,6 +1,7 @@
-import { AuroraText } from "@/components/magicui/aurora-text";
-import { screen, render } from "@testing-library/react";
 import { useTheme } from "next-themes";
+import { screen, render } from "@testing-library/react";
+
+import { AuroraText } from "@/components/magicui/aurora-text";
 
 jest.mock("next-themes", () => ({
     useTheme: jest.fn(),

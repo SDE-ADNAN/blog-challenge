@@ -14,7 +14,6 @@ const Toaster = ({ ...props }: ToasterProps) => {
     setMounted(true)
   }, [])
 
-  // Default to a system-appropriate theme before mounting
   const theme = mounted ? resolvedTheme : undefined
 
   return (

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { render, screen } from '@testing-library/react';
+
 import {
     Card,
     CardHeader,
@@ -7,7 +8,7 @@ import {
     CardTitle,
     CardDescription,
     CardContent,
-} from './card';
+} from '@/components/ui/card';
 
 describe('Card Components', () => {
     describe('Card', () => {

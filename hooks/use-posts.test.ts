@@ -1,6 +1,7 @@
 import { renderHook, waitFor } from "@testing-library/react";
 import { toast } from "sonner";
-import { useComments, usePost, usePosts } from "./usePosts";
+
+import { useComments, usePost, usePosts } from "@/hooks/usePosts";
 
 // Mock the global fetch function
 global.fetch = jest.fn();

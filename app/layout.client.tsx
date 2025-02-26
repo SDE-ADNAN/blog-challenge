@@ -1,10 +1,12 @@
 'use client';
 
-import { Toaster } from "@/components/ui/sonner";
+import { useTheme } from 'next-themes';
 import { Moon, Sun } from "lucide-react";
 import { useState, useEffect } from 'react';
-import { useTheme } from 'next-themes';
+
 import { cn } from "@/lib/utils";
+
+import { Toaster } from "@/components/ui/sonner";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
     const [mounted, setMounted] = useState(false);
@@ -14,8 +16,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         setMounted(true);
     }, []);
 
-    // Use a default background that matches your color scheme
-    // This is just for the toggle button background
     const themeClass = mounted
         ? (theme === 'light' ? 'bg-white text-black' : 'bg-black text-white')
         : 'bg-transparent';

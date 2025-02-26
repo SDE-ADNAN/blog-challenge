@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
-import PostDetailSkeleton from './post-detail-skeleton';
+
+import PostDetailSkeleton from '@/components/ui/skeleton-loaders/post-detail-skeleton';
 
 describe('PostDetailSkeleton', () => {
     it('renders the skeleton structure correctly', () => {

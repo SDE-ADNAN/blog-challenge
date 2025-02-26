@@ -1,15 +1,8 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import ImageWithFallback from './image-with-fallback';
+
 import { FALLBACK_IMAGE_URL } from '@/constants';
 
-// // Mock next/image
-// jest.mock('next/image', () => ({
-//     __esModule: true,
-//     default: (props: any) => {
-//         // eslint-disable-next-line @next/next/no-img-element
-//         return <img {...props} />;
-//     },
-// }));
+import ImageWithFallback from '@/components/ui/image-with-fallback';
 
 describe('ImageWithFallback', () => {
     const mockProps = {
