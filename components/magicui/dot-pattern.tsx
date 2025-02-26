@@ -128,26 +128,7 @@ export function DotPattern({
           r={cr}
           fill={glow ? `url(#${id}-gradient)` : "currentColor"}
           className="text-neutral-400/80 dot-animate"
-        // initial={glow ? { opacity: 0.4, scale: 1 } : {}}
-        // animate={
-        //   glow
-        //     ? {
-        //       opacity: [0.4, 1, 0.4],
-        //       scale: [1, 1.5, 1],
-        //     }
-        //     : {}
-        // }
-        // transition={
-        //   glow
-        //     ? {
-        //       duration: dot.duration,
-        //       repeat: Infinity,
-        //       repeatType: "reverse",
-        //       delay: dot.delay,
-        //       ease: "easeInOut",
-        //     }
-        //     : {}
-        // }
+          data-testid="dot"
         />
       ))}
     </svg>

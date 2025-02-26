@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import { ThemeProvider, useNextTheme } from './ThemeContext';
+import { ThemeProvider, useNextTheme } from './theme-context';
 import React, { ReactNode } from 'react';
 
 // Mock the next-themes module

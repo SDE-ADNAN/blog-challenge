@@ -64,7 +64,7 @@ export default function PostDetail({ params }: { params: Promise<{ slug: string 
                             ))}
                         </div>
                     ) : (
-                        <div className="space-y-6">
+                        <div className="space-y-6" data-testid="comments-section'">
                             {comments.map(comment => (
                                 <Card key={comment.id} className="
                                     rounded-xl shadow-md border

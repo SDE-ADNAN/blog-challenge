@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import Layout from "./layout.client";
-import { ThemeProvider } from "@/contexts/ThemeContext";
+import { ThemeProvider } from "@/contexts/theme-context";
 import { DotPatternWithGlowEffect } from "@/components/magicui/dot-pattern-with-glow-effect";
 import Link from "next/link";
 

@@ -1,5 +1,4 @@
 import "@testing-library/jest-dom";
-import { mockedUseRouter } from "./__mocks__/navigation.mock";
 import "@testing-library/react-hooks";
 import fetchMock from "jest-fetch-mock";
 
@@ -19,8 +18,3 @@ Object.defineProperty(window, "matchMedia", {
     dispatchEvent: jest.fn(),
   })),
 });
-
-// mock useRouter globally
-jest.mock("next/navigation", () => ({
-  useRouter: mockedUseRouter,
-}));

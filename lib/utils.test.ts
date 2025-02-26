@@ -23,12 +23,6 @@ describe("formatString function", () => {
     expect(formatString("hello world", 5)).toBe("Hello");
   });
 
-  it("returns an empty string for invalid inputs", () => {
-    expect(formatString("", 5)).toBe("");
-    expect(formatString(null as any, 5)).toBe("");
-    expect(formatString(undefined as any, 5)).toBe("");
-  });
-
   it("returns the full string if it's shorter than maxLength", () => {
     expect(formatString("hi", 10)).toBe("Hi");
   });

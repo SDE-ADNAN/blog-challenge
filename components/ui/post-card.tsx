@@ -2,7 +2,7 @@
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import Link from "next/link";
 import { formatString, getRandomBlogImage } from "@/lib/utils";
-import ImageWithFallback from "./ImageWithFallback";
+import ImageWithFallback from "./image-with-fallback";
 import { FALLBACK_IMAGE_URL } from "@/constants";
 
 interface PostCardProps {
