@@ -1,10 +1,8 @@
-"use client"; // Enables client-side rendering for this component
+'use server'; // Enables server-side rendering for this component
 
 import Link from "next/link";
 import { formatString, getRandomBlogImage } from "@/lib/utils";
-
 import { FALLBACK_IMAGE_URL } from "@/constants";
-
 import ImageWithFallback from "@/components/ui/image-with-fallback";
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 
@@ -19,7 +17,7 @@ interface PostCardProps {
     index: number; // Index used to prioritize image loading
 }
 
-const PostCard = ({ post, index }: PostCardProps) => {
+export default async function PostCard({ post, index }: PostCardProps) {
     // Use provided image URL or fallback to a random blog image
     const imgUrl = post.imageUrl || getRandomBlogImage();
 
@@ -42,8 +40,7 @@ const PostCard = ({ post, index }: PostCardProps) => {
                         style={{ borderRadius: "0.7rem 0.7rem 0 0" }} // Adds rounded corners to the top
                         fill // Enables responsive image sizing
                         className="object-cover"
-                        priority={index < 7} // Prioritize loading the first 6  post image
-                        loading={index < 7 ? "eager" : "lazy"} // Lazy load images except for the first 6
+                        priority={index < 7} // Prioritize loading the first 6 post images
                     />
                 </div>
 
@@ -60,6 +57,4 @@ const PostCard = ({ post, index }: PostCardProps) => {
             </Card>
         </Link>
     );
-};
-
-export default PostCard;
+}
