@@ -5,6 +5,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 
 export default function PostDetailSkeleton() {
     return (
+        // Main container for the post skeleton structure
         <div role="article" data-testid="post-detail-skeleton">
             <Card
                 className="
@@ -18,7 +19,7 @@ export default function PostDetailSkeleton() {
                     <Skeleton data-testid="skeleton" className="h-8 w-3/4 dark:bg-gray-700 bg-gray-200" />
                 </CardHeader>
                 <CardContent className="space-y-6">
-                    {/* Post Body Skeleton */}
+                    {/* Post Body Skeleton - Simulating multiple lines of text */}
                     <div className="space-y-2">
                         <Skeleton data-testid="skeleton" className="h-4 w-full dark:bg-gray-700 bg-gray-200" />
                         <Skeleton data-testid="skeleton" className="h-4 w-full dark:bg-gray-700 bg-gray-200" />
@@ -26,15 +27,15 @@ export default function PostDetailSkeleton() {
                         <Skeleton data-testid="skeleton" className="h-4 w-4/6 dark:bg-gray-700 bg-gray-200" />
                     </div>
 
-                    {/* Share Button Skeleton */}
+                    {/* Share Button Skeleton - Simulating a button */}
                     <Skeleton data-testid="skeleton" className="h-10 w-32 dark:bg-gray-700 bg-gray-200 rounded-[4px]" />
 
-                    {/* Comments Section */}
+                    {/* Comments Section Skeleton */}
                     <div className="mt-8 space-y-6" data-testid="comments-section">
                         {/* Comments Title Skeleton */}
                         <Skeleton data-testid="skeleton" className="h-7 w-40 dark:bg-gray-700 bg-gray-200" />
 
-                        {/* Comments List */}
+                        {/* List of Comment Skeletons */}
                         <div className="space-y-6">
                             {[...Array(5)].map((_, i) => (
                                 <Card
@@ -48,13 +49,13 @@ export default function PostDetailSkeleton() {
                                     data-testid="comment-skeleton"
                                 >
                                     <CardContent className="pt-6 space-y-4">
-                                        {/* Comment Name */}
+                                        {/* Comment Author Name Skeleton */}
                                         <Skeleton data-testid="skeleton" className="h-5 w-1/3 dark:bg-gray-700 bg-gray-200" />
 
-                                        {/* Comment Email */}
+                                        {/* Comment Email Skeleton */}
                                         <Skeleton data-testid="skeleton" className="h-4 w-1/4 dark:bg-gray-700 bg-gray-200" />
 
-                                        {/* Comment Body */}
+                                        {/* Comment Body Skeleton - Simulating multiple lines of text */}
                                         <div className="space-y-2 ml-3">
                                             <Skeleton data-testid="skeleton" className="h-4 w-full dark:bg-gray-700 bg-gray-200" />
                                             <Skeleton data-testid="skeleton" className="h-4 w-5/6 dark:bg-gray-700 bg-gray-200" />

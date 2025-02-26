@@ -7,7 +7,7 @@ import { Toaster } from '@/components/ui/sonner';
 // Define the expected theme types
 type Theme = 'light' | 'dark' | 'system' | undefined;
 
-// Define toast option class names structure
+// Define the structure for toast option class names
 interface ToastOptionClassNames {
     toast: string;
     description: string;
@@ -15,17 +15,17 @@ interface ToastOptionClassNames {
     cancelButton: string;
 }
 
-// Define toast options structure
+// Define the structure for toast options
 interface ToastOptions {
     classNames: ToastOptionClassNames;
 }
 
-// Mock the next-themes module
+// Mock the `next-themes` module to control theme resolution
 jest.mock('next-themes', () => ({
     useTheme: jest.fn(),
 }));
 
-// Define a type for mock sonner props
+// Define a type for the mocked Sonner props
 interface MockSonnerProps {
     theme?: Theme;
     className?: string;
@@ -36,10 +36,10 @@ interface MockSonnerProps {
     [key: string]: unknown;
 }
 
-// Mock the sonner module with proper DOM attribute handling
+// Mock the `sonner` module to avoid actual rendering
 jest.mock('sonner', () => ({
     Toaster: jest.fn(({ theme, className, toastOptions, ...props }: MockSonnerProps) => {
-        // Convert boolean props to strings for DOM attributes
+        // Convert boolean props to strings for valid DOM attributes
         const domProps: Record<string, string> = {};
         Object.entries(props).forEach(([key, value]) => {
             if (typeof value === 'boolean') {
@@ -65,17 +65,17 @@ jest.mock('sonner', () => ({
 
 describe('Toaster Component', () => {
     beforeEach(() => {
-        // Reset the mocks before each test
+        // Reset all mocks before each test to ensure isolated test cases
         jest.clearAllMocks();
     });
 
     it('should render the Sonner component with undefined theme initially', () => {
-        // Mock the useTheme hook - important: we set mounted to false initially by mocking useState
+        // Mock `useTheme` to return a default theme
         (useTheme as jest.Mock).mockReturnValue({
             resolvedTheme: 'light' as Theme,
         });
 
-        // Mock React's useState to control the mounted state
+        // Mock `useState` to return `false` initially to simulate unmounted state
         const originalUseState = React.useState;
         const mockUseState = jest.fn()
             .mockImplementationOnce(() => [false, jest.fn() as React.Dispatch<React.SetStateAction<boolean>>]);
@@ -84,34 +84,35 @@ describe('Toaster Component', () => {
 
         render(<Toaster />);
 
-        // Initially, it should render with undefined theme due to mounting logic
+        // Verify that the component initially renders with an undefined theme
         expect(screen.getByTestId('mock-sonner')).toBeInTheDocument();
         expect(screen.getByTestId('mock-sonner').getAttribute('data-theme')).toBeNull();
 
-        // Restore original useState
+        // Restore the original `useState`
         React.useState = originalUseState;
     });
 
     it('should update theme after mounting', async () => {
-        // Mock the useTheme hook
+        // Mock `useTheme` to return the dark theme
         (useTheme as jest.Mock).mockReturnValue({
             resolvedTheme: 'dark' as Theme,
         });
 
         render(<Toaster />);
 
-        // Wait for the useEffect to run and the component to be "mounted"
+        // Wait for the component to mount and apply the resolved theme
         await waitFor(() => {
             expect(screen.getByTestId('mock-sonner').getAttribute('data-theme')).toBe('dark');
         });
     });
 
     it('should pass custom props to Sonner component', async () => {
-        // Mock the useTheme hook
+        // Mock `useTheme` to return a light theme
         (useTheme as jest.Mock).mockReturnValue({
             resolvedTheme: 'light' as Theme,
         });
 
+        // Define custom props for the toaster
         const customProps: Partial<React.ComponentProps<typeof SonnerToaster>> = {
             position: 'top-right',
             expand: true,
@@ -130,7 +131,7 @@ describe('Toaster Component', () => {
     });
 
     it('should apply correct CSS classes', async () => {
-        // Mock the useTheme hook
+        // Mock `useTheme` to return the system theme
         (useTheme as jest.Mock).mockReturnValue({
             resolvedTheme: 'system' as Theme,
         });
@@ -156,7 +157,7 @@ describe('Toaster Component', () => {
     });
 
     it('should handle undefined resolvedTheme', async () => {
-        // Mock the useTheme hook with undefined resolvedTheme
+        // Mock `useTheme` to return an undefined theme
         (useTheme as jest.Mock).mockReturnValue({
             resolvedTheme: undefined,
         });
@@ -169,7 +170,7 @@ describe('Toaster Component', () => {
         });
     });
 
-    it('should handle resolvedTheme changes', async () => {
+    it('should handle resolvedTheme changes dynamically', async () => {
         // Start with light theme
         const mockUseTheme = useTheme as jest.Mock;
         mockUseTheme.mockReturnValue({
@@ -182,7 +183,7 @@ describe('Toaster Component', () => {
             expect(screen.getByTestId('mock-sonner').getAttribute('data-theme')).toBe('light');
         });
 
-        // Change to dark theme
+        // Change theme to dark and rerender the component
         mockUseTheme.mockReturnValue({
             resolvedTheme: 'dark' as Theme,
         });

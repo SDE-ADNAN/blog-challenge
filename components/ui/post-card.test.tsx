@@ -12,40 +12,56 @@ jest.mock('@radix-ui/react-slot', () => ({
     }),
 }));
 
-
 describe('Button', () => {
     it('renders button with default variant and size', () => {
         render(<Button>Click me</Button>);
         const button = screen.getByRole('button', { name: /click me/i });
+
+        // Check if the button has the default primary background class
         expect(button).toHaveClass('bg-primary');
-        expect(button).toHaveClass('h-9 px-4 py-2'); // Check for default size classes
+
+        // Check if the button has the default size classes
+        expect(button).toHaveClass('h-9 px-4 py-2');
     });
 
-    // Additional Test Cases
-
     it('triggers click event', () => {
-        const handleClick = jest.fn();
+        const handleClick = jest.fn(); // Mock function to track clicks
+
         render(<Button onClick={handleClick}>Click me</Button>);
         const button = screen.getByRole('button', { name: /click me/i });
-        fireEvent.click(button);
+
+        fireEvent.click(button); // Simulate click event
+
+        // Ensure the click handler was called once
         expect(handleClick).toHaveBeenCalledTimes(1);
     });
 
     it('renders with an icon', () => {
-        render(<Button><span className="icon" />Button with Icon</Button>);
+        render(
+            <Button>
+                <span className="icon" /> Button with Icon
+            </Button>
+        );
+
         const button = screen.getByRole('button', { name: /button with icon/i });
+
+        // Check if the button contains the icon element
         expect(button.querySelector('.icon')).toBeInTheDocument();
     });
 
     it('applies custom styles', () => {
         render(<Button style={{ backgroundColor: 'red' }}>Styled Button</Button>);
         const button = screen.getByRole('button', { name: /styled button/i });
+
+        // Verify that the inline style is applied
         expect(button).toHaveStyle('background-color: red');
     });
 
     it('is accessible with aria-label', () => {
         render(<Button aria-label="Accessible Button">Button</Button>);
         const button = screen.getByRole('button', { name: /accessible button/i });
+
+        // Ensure the button has the correct aria-label for accessibility
         expect(button).toHaveAttribute('aria-label', 'Accessible Button');
     });
 });

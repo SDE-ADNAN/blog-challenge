@@ -59,7 +59,6 @@ interface DotPatternProps extends React.SVGProps<SVGSVGElement> {
  * - Uses Motion for animations
  * - Dots color can be controlled via the text color utility classes
  */
-
 export function DotPattern({
   width = 16,
   height = 16,
@@ -70,10 +69,11 @@ export function DotPattern({
   glow = false,
   ...props
 }: DotPatternProps) {
-  const id = useId();
+  const id = useId(); // Generates a unique ID for the component instance
   const containerRef = useRef<SVGSVGElement>(null);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
+  // Effect to update the dimensions of the SVG container on resize
   useEffect(() => {
     const updateDimensions = () => {
       if (containerRef.current) {
@@ -82,11 +82,12 @@ export function DotPattern({
       }
     };
 
-    updateDimensions();
+    updateDimensions(); // Set initial dimensions
     window.addEventListener("resize", updateDimensions);
     return () => window.removeEventListener("resize", updateDimensions);
   }, []);
 
+  // Generate dot positions based on container dimensions and spacing
   const dots = Array.from(
     {
       length:
@@ -99,8 +100,8 @@ export function DotPattern({
       return {
         x: col * width + cx,
         y: row * height + cy,
-        delay: Math.random() * 5,
-        duration: Math.random() * 3 + 2,
+        delay: Math.random() * 5, // Random animation delay
+        duration: Math.random() * 3 + 2, // Random animation duration
       };
     },
   );
@@ -115,12 +116,14 @@ export function DotPattern({
       )}
       {...props}
     >
+      {/* Define a radial gradient for the glowing effect */}
       <defs>
         <radialGradient id={`${id}-gradient`}>
           <stop offset="0%" stopColor="currentColor" stopOpacity="1" />
           <stop offset="100%" stopColor="currentColor" stopOpacity="0" />
         </radialGradient>
       </defs>
+      {/* Render the dots */}
       {dots.map((dot) => (
         <circle
           key={`${dot.x}-${dot.y}`}

@@ -1,25 +1,27 @@
 import { renderHook, waitFor } from "@testing-library/react";
 import { toast } from "sonner";
-
 import { useComments, usePost, usePosts } from "@/hooks/usePosts";
 
-// Mock the global fetch function
+// Mock the global fetch function to simulate API calls in tests.
 global.fetch = jest.fn();
 
-// Mock the toast function
+// Mock the toast function from "sonner" to track error messages.
 jest.mock("sonner", () => ({
   toast: {
     error: jest.fn(),
   },
 }));
 
+// Test suite for `usePosts` hook
 describe("usePosts", () => {
   beforeEach(() => {
-    jest.clearAllMocks();
+    jest.clearAllMocks(); // Reset all mocks before each test
   });
 
   it("should fetch posts successfully", async () => {
     const mockPosts = [{ id: 1, title: "Test Post" }];
+
+    // Mock a successful API response
     (global.fetch as jest.Mock).mockResolvedValue({
       ok: true,
       json: jest.fn().mockResolvedValue(mockPosts),
@@ -27,15 +29,17 @@ describe("usePosts", () => {
 
     const { result } = renderHook(() => usePosts());
 
-    expect(result.current.loading).toBe(true);
+    expect(result.current.loading).toBe(true); // Initial loading state should be true
 
     await waitFor(() => expect(result.current.loading).toBe(false));
 
+    // Ensure posts are set correctly and no error occurred
     expect(result.current.posts).toEqual(mockPosts);
     expect(result.current.error).toBeNull();
   });
 
   it("should handle API error", async () => {
+    // Mock an API failure with status 500
     (global.fetch as jest.Mock).mockResolvedValue({
       ok: false,
       status: 500,
@@ -45,12 +49,14 @@ describe("usePosts", () => {
 
     await waitFor(() => expect(result.current.loading).toBe(false));
 
+    // Expect an empty posts array and an error message
     expect(result.current.posts).toEqual([]);
     expect(result.current.error).toBe("API responded with status: 500");
     expect(toast.error).toHaveBeenCalledWith("API responded with status: 500");
   });
 
   it("should handle invalid data format", async () => {
+    // Mock an API returning invalid JSON format
     (global.fetch as jest.Mock).mockResolvedValue({
       ok: true,
       json: jest.fn().mockResolvedValue("invalid data"),
@@ -60,6 +66,7 @@ describe("usePosts", () => {
 
     await waitFor(() => expect(result.current.loading).toBe(false));
 
+    // Expect an error due to incorrect data format
     expect(result.current.posts).toEqual([]);
     expect(result.current.error).toBe(
       "API returned invalid data format (expected array)"
@@ -70,6 +77,7 @@ describe("usePosts", () => {
   });
 
   it("should handle unknown error", async () => {
+    // Mock an unexpected error
     (global.fetch as jest.Mock).mockRejectedValue("Unknown error");
 
     const { result } = renderHook(() => usePosts());
@@ -82,6 +90,7 @@ describe("usePosts", () => {
   });
 });
 
+// Test suite for `useComments` hook
 describe("useComments", () => {
   beforeEach(() => {
     jest.clearAllMocks();
@@ -89,6 +98,7 @@ describe("useComments", () => {
 
   it("should fetch comments successfully", async () => {
     const mockComments = [{ id: 1, body: "Test Comment" }];
+
     (global.fetch as jest.Mock).mockResolvedValue({
       ok: true,
       json: jest.fn().mockResolvedValue(mockComments),
@@ -157,6 +167,7 @@ describe("useComments", () => {
   });
 });
 
+// Test suite for `usePost` hook
 describe("usePost", () => {
   beforeEach(() => {
     jest.clearAllMocks();
@@ -164,6 +175,7 @@ describe("usePost", () => {
 
   it("should fetch a post successfully", async () => {
     const mockPost = { id: 1, title: "Test Post" };
+
     (global.fetch as jest.Mock).mockResolvedValue({
       ok: true,
       json: jest.fn().mockResolvedValue(mockPost),
