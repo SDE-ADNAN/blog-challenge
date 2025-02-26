@@ -111,5 +111,3 @@ yarn test --coverage
 ```
 
 ---
-
-🚀 Happy Coding! 🎉
