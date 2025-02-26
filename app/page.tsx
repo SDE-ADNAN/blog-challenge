@@ -20,8 +20,8 @@ export default function Home() {
         All <br></br><AuroraText>Top Curated</AuroraText> <br /> Blog Posts
       </h1>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 items-stretch">
-        {posts.map(post => (
-          <PostCard key={post.id} post={post} />
+        {posts.map((post, index) => (
+          <PostCard key={post.id} post={post} index={index} />
         ))}
       </div>
     </>

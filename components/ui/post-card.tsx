@@ -12,9 +12,10 @@ interface PostCardProps {
         body: string;
         imageUrl?: string;
     };
+    index: number;
 }
 
-const PostCard = ({ post }: PostCardProps) => {
+const PostCard = ({ post, index }: PostCardProps) => {
     // Use post's image if available, otherwise get a random one
     const imgUrl = post.imageUrl || getRandomBlogImage();
 
@@ -31,8 +32,9 @@ const PostCard = ({ post }: PostCardProps) => {
                         fallbackSrc={FALLBACK_IMAGE_URL}
                         style={{ borderRadius: "0.7rem 0.7rem 0 0" }}
                         fill
-                        className="object-cover "
-                        priority
+                        className="object-cover"
+                        priority={index === 0}
+                        loading={index === 0 ? "eager" : "lazy"} // ✅ Lazy load for rest
                     />
                 </div>
                 <CardHeader className="flex-grow flex flex-col">
