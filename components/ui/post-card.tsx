@@ -24,10 +24,10 @@ const PostCard = ({ post, index }: PostCardProps) => {
     const imgUrl = post.imageUrl || getRandomBlogImage();
 
     // Truncate the title if it's longer than 30 characters and format it
-    const title = post.title.length > 30 ? `${formatString(post.title.substring(0, 27), 27)} ...` : post.title;
+    const title = post.title.length > 30 ? `${formatString(post.title.substring(0, 27), 27)} ...` : formatString(post.title, 9999);
 
     // Truncate the body text if it's longer than 100 characters and format it
-    const body = post.body.length > 100 ? `${formatString(post.body.substring(0, 100), 100)} ...` : post.body;
+    const body = post.body.length > 100 ? `${formatString(post.body.substring(0, 100), 100)} ...` : formatString(post.body, 9999);
 
     return (
         // Wraps the entire card in a Link to navigate to the post details page

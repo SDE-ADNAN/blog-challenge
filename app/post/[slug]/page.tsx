@@ -30,12 +30,6 @@ export default function PostDetail({ params }: { params: Promise<{ slug: string 
         setShowText(true);
     }, []);
 
-    // // Displays a loading skeleton if the post data or comments are still loading
-    // if (!post || loading || postLoading) return (
-    //     <PostDetailSkeleton />
-    // );
-
-
 
     return (
         <>
@@ -59,7 +53,7 @@ export default function PostDetail({ params }: { params: Promise<{ slug: string 
                         {/* Post Content */}
                         <p className="text-lg 
                     dark:text-gray-300 text-gray-700">
-                            {post.body}
+                            {formatString(post.body, Infinity)}
                         </p>
 
                         {/* Share Post Button */}

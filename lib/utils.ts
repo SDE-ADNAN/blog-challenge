@@ -17,17 +17,18 @@ export function cn(...inputs: ClassValue[]) {
  * @returns {string} Formatted string
  */
 export function formatString(str: string, maxLength: number): string {
-  // Handle invalid inputs
-  if (!str || typeof str !== "string") return "";
+  // Trim input string
+  const trimmedStr = str.trim();
 
+  // Handle invalid inputs
+  if (!trimmedStr || typeof trimmedStr !== "string") return "";
   // Take substring up to maxLength
-  str = str.substring(0, maxLength);
+  str = trimmedStr.trim().substring(0, maxLength);
 
   // Capitalize first letter if string is long enough
-  if (str.length > 0) {
-    str = str.charAt(0).toUpperCase() + str.slice(1);
+  if (trimmedStr.length > 0) {
+    str = trimmedStr.charAt(0).toUpperCase() + trimmedStr.slice(1);
   }
-
   return str;
 }
 
