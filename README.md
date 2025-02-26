@@ -4,6 +4,14 @@ A **Next.js** blog application with a modern UI, responsive design, and a smooth
 
 ---
 
+## 🚀 Some Metrices
+
+- **Largest Contentful Paint (LCP):** <span style="color: lightgreen;font-weight:700">1.61s</span>
+- **Interaction to Next Paint (INP):** <span style="color: lightgreen;font-weight:700">16ms</span>
+- **Cumulative Layout Shift (CLS):** <span style="color: lightgreen;font-weight:700">0.00</span>
+
+---
+
 ## 🚀 Demo
 
 - **Live Demo:** https://blog-challenge-brown.vercel.app/
