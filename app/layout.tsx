@@ -5,6 +5,7 @@ import Layout from "./layout.client";
 import { ThemeProvider } from "@/contexts/theme-context";
 import { DotPatternWithGlowEffect } from "@/components/magicui/dot-pattern-with-glow-effect";
 import Link from "next/link";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,6 +31,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <SpeedInsights />
       <head>
         {/* This script prevents flash during theme loading */}
         <script dangerouslySetInnerHTML={{
