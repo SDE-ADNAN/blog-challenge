@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   description: "Next.js Blog Application", // Description for SEO
 };
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], preload: true });
 
 export default function RootLayout({
   children,

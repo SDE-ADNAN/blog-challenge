@@ -42,8 +42,8 @@ const PostCard = ({ post, index }: PostCardProps) => {
                         style={{ borderRadius: "0.7rem 0.7rem 0 0" }} // Adds rounded corners to the top
                         fill // Enables responsive image sizing
                         className="object-cover"
-                        priority={index === 0} // Prioritize loading the first post image
-                        loading={index === 0 ? "eager" : "lazy"} // Lazy load images except for the first one
+                        priority={index < 7} // Prioritize loading the first 6  post image
+                        loading={index < 7 ? "eager" : "lazy"} // Lazy load images except for the first 6
                     />
                 </div>
 

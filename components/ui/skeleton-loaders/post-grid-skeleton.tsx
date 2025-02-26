@@ -31,13 +31,6 @@ export const PostCardSkeleton = () => {
 export default function PostGridSkeleton() {
     return (
         <>
-            {/* Section title placeholder */}
-            <h1 className="flex flex-col items-center sm:my-20 lg:my-32">
-                <Skeleton className="h-10 w-20 dark:bg-gray-700 bg-gray-200" /> <br />
-                <Skeleton className="h-10 w-28 dark:bg-gray-700 bg-gray-200" /> <br />
-                <Skeleton className="h-10 w-52 dark:bg-gray-700 bg-gray-200" />
-            </h1>
-
             {/* Grid layout for post skeletons */}
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 items-stretch">
                 {/* Render six post skeletons */}

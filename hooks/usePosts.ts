@@ -21,7 +21,10 @@ export const usePosts = () => {
      */
     const fetchPosts = async () => {
       try {
-        const response = await fetch(POSTS_API);
+        const response = await fetch(POSTS_API, {
+          method: "GET",
+          cache: "force-cache",
+        });
 
         // Check if API response is successful
         if (!response.ok) {
@@ -82,7 +85,10 @@ export const useComments = (postId: number) => {
      */
     const fetchComments = async () => {
       try {
-        const response = await fetch(`${COMMENTS_API}?postId=${postId}`);
+        const response = await fetch(`${COMMENTS_API}?postId=${postId}`, {
+          method: "GET",
+          cache: "force-cache",
+        });
 
         // Check if API response is successful
         if (!response.ok) {
@@ -141,7 +147,10 @@ export const usePost = (postId: number) => {
      */
     const fetchPost = async () => {
       try {
-        const response = await fetch(`${POSTS_API}/${postId}`);
+        const response = await fetch(`${POSTS_API}/${postId}`, {
+          method: "GET",
+          cache: "force-cache",
+        });
 
         // Check if API response is successful
         if (!response.ok) {
